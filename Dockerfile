@@ -17,11 +17,6 @@ COPY config.py /home/user/rest_api
 RUN pip install git+https://github.com/spalman/haystack.git
 RUN pip install gdown 
 
-# optional : copy sqlite db if needed for testing
-#COPY qa.db /home/user/
-
-# optional: copy data directory containing docs for ingestion
-#COPY data /home/user/data
 
 EXPOSE 8000
 

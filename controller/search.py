@@ -29,6 +29,7 @@ router = APIRouter()
 DATASETS_DIR = "datasets"
 CURRENT_DATASET = None
 PIPELINES = {"QA": None, "SemanticSearch": None}
+reader = FARMReader(model_name_or_path="deepset/roberta-base-squad2", use_gpu=False)
 
 
 def check_datasets():
@@ -60,7 +61,7 @@ def load_model(dataset_name):
     )
     retriever_pt = os.path.join(DATASETS_DIR, dataset_name, "retriever.pt")
     retriever = DensePassageRetriever.load(retriever_pt, document_store=document_store)
-    reader = FARMReader(model_name_or_path="deepset/roberta-base-squad2", use_gpu=False)
+
     CURRENT_DATASET = dataset_name
     PIPELINES["QA"] = ExtractiveQAPipeline(reader, retriever)
     PIPELINES["SemanticSearch"] = DocumentSearchPipeline(retriever)

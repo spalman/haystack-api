@@ -85,6 +85,6 @@ SPLIT_RESPECT_SENTENCE_BOUNDARY = os.getenv("SPLIT_RESPECT_SENTENCE_BOUNDARY", T
 
 
 # Monitoring
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG")
 APM_SERVER = os.getenv("APM_SERVER", None)
 APM_SERVICE_NAME = os.getenv("APM_SERVICE_NAME", "haystack-backend")

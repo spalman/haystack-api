@@ -11,14 +11,15 @@ RUN wget --no-check-certificate https://dl.xpdfreader.com/xpdf-tools-linux-4.03.
 # copy code
 ADD controller /home/user/rest_api/controller
 COPY application.py /home/user/rest_api
+COPY deploy.py /home/user/rest_api
 COPY config.py /home/user/rest_api
 
 # install as a package
 RUN pip install git+https://github.com/spalman/haystack.git
-RUN pip install gdown 
+RUN pip install gdown loguru
 
 
 EXPOSE 8000
 
 # cmd for running the API
-CMD ["gunicorn", "application:app",  "-b", "0.0.0.0", "-k", "uvicorn.workers.UvicornWorker", "--workers", "1", "--timeout", "180", "--preload"]
+CMD ["python3","deploy.py"]

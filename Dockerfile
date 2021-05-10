@@ -22,4 +22,4 @@ RUN pip install gdown loguru
 EXPOSE 8000
 
 # cmd for running the API
-CMD ["python3","deploy.py"]
+CMD ["uvicorn", "application:app", "--host", "0.0.0.0", "--port", "8000"]
